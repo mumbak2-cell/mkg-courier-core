@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="Core Courier Driver Fundamentals online course by MK Global SA. Professional training for South African parcel-delivery drivers.">
+<meta name="theme-color" content="#1B3A5C">
+<title>Core Courier Driver Fundamentals | MK Global SA</title>
+
+<style>
+:root {
+  --mk-navy: #1B3A5C;
+  --mk-blue: #2E75B6;
+  --mk-gold: #C5972C;
+  --mk-amber: #F4B740;
+  --mk-amber-bg: #FFF8E7;
+  --mk-grey-50: #F7F8FA;
+  --mk-grey-100: #ECEEF2;
+  --mk-grey-200: #D8DCE3;
+  --mk-grey-400: #8B94A3;
+  --mk-grey-700: #3A4251;
+  --mk-text: #1A2330;
+  --mk-white: #FFFFFF;
+  --mk-success: #2E8B57;
+  --mk-success-bg: #E6F4EC;
+  --mk-error: #B22222;
+  --mk-error-bg: #FBEAE8;
+  --mk-red: #B22222;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(26,35,48,0.06);
+  --shadow-md: 0 4px 12px rgba(26,35,48,0.08);
+  --shadow-lg: 0 8px 24px rgba(26,35,48,0.12);
+  --font-body: Arial, Helvetica, sans-serif;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;padding:0;font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--mk-text);background:var(--mk-grey-50);min-height:100vh;-webkit-font-smoothing:antialiased}
+.site-header{background:#000;color:var(--mk-white);padding:var(--space-3) var(--space-5);box-shadow:var(--shadow-md);position:sticky;top:0;z-index:50;border-bottom:2px solid var(--mk-gold)}
+.site-header__inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.brand{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;color:var(--mk-white)}
+.brand__logo{height:72px;width:auto;display:block;flex-shrink:0}
+@media(max-width:480px){.brand__logo{height:56px}}
+.brand__text{font-weight:bold;font-size:15px;line-height:1.3}
+.header-progress{font-size:13px;opacity:0.9;white-space:nowrap}
+.container{max-width:720px;margin:0 auto;padding:var(--space-5) var(--space-4)}
+.container--wide{max-width:960px}
+.view{display:none}
+.view.is-active{display:block;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--mk-white);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-md);border:1px solid var(--mk-grey-100)}
+.card+.card{margin-top:var(--space-5)}
+h1,h2,h3,h4{color:var(--mk-navy);line-height:1.25;margin:0 0 var(--space-4) 0}
+h1{font-size:26px;font-weight:bold}
+h2{font-size:21px;font-weight:bold;margin-top:var(--space-6)}
+h3{font-size:18px;font-weight:bold;margin-top:var(--space-5)}
+h4{font-size:16px;font-weight:bold}
+@media(min-width:640px){h1{font-size:32px}h2{font-size:24px}}
+p{margin:0 0 var(--space-4) 0}
+.lead{font-size:17px;color:var(--mk-grey-700)}
+.eyebrow{display:inline-block;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;color:var(--mk-gold);margin-bottom:var(--space-3)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:48px;padding:12px 24px;border-radius:var(--radius-md);font-family:inherit;font-size:16px;font-weight:bold;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:all 0.15s ease;line-height:1.2;text-align:center}
+.btn:focus-visible{outline:3px solid var(--mk-amber);outline-offset:2px}
+.btn--primary{background:var(--mk-navy);color:var(--mk-white);border-color:var(--mk-navy)}
+.btn--primary:hover{background:#142c47;border-color:#142c47}
+.btn--primary:active{transform:translateY(1px)}
+.btn--gold{background:var(--mk-gold);color:var(--mk-navy);border-color:var(--mk-gold)}
+.btn--gold:hover{background:#b0861f;border-color:#b0861f}
+.btn--secondary{background:var(--mk-white);color:var(--mk-navy);border-color:var(--mk-navy)}
+.btn--secondary:hover{background:var(--mk-grey-50)}
+.btn--full{width:100%}
+.btn:disabled{opacity:0.45;cursor:not-allowed;transform:none}
+.field{margin-bottom:var(--space-5)}
+.field label{display:block;font-weight:bold;margin-bottom:var(--space-2);color:var(--mk-grey-700);font-size:15px}
+.field input,.field select,.field textarea{width:100%;min-height:48px;padding:12px 14px;border:2px solid var(--mk-grey-200);border-radius:var(--radius-md);font-family:inherit;font-size:16px;color:var(--mk-text);background:var(--mk-white);transition:border-color 0.15s ease}
+.field textarea{min-height:80px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--mk-blue);box-shadow:0 0 0 3px rgba(46,117,182,0.15)}
+.field__hint{font-size:13px;color:var(--mk-grey-400);margin-top:var(--space-2)}
+.field--error input,.field--error select{border-color:var(--mk-error);background:var(--mk-error-bg)}
+.field__error{display:none;font-size:13px;color:var(--mk-error);margin-top:var(--space-2);font-weight:bold}
+.field--error .field__error{display:block}
+.field__status{display:none;font-size:13px;color:var(--mk-grey-700);margin-top:var(--space-2)}
+.field__status.is-visible{display:block}
+.outcomes{list-style:none;padding:0;margin:0 0 var(--space-5) 0}
+.outcomes li{padding:var(--space-3) 0 var(--space-3) 36px;position:relative;border-bottom:1px solid var(--mk-grey-100);font-size:15px}
+.outcomes li:last-child{border-bottom:none}
+.outcomes li::before{content:"";position:absolute;left:0;top:16px;width:22px;height:22px;background:var(--mk-gold);border-radius:50%;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><polyline points='5 10 9 14 15 6' stroke='%231B3A5C' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-size:22px;background-repeat:no-repeat}
+.meta-row{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-5)}
+.meta-pill{background:var(--mk-grey-100);color:var(--mk-grey-700);padding:6px 14px;border-radius:100px;font-size:13px;font-weight:bold}
+.lesson-list{list-style:none;padding:0;margin:0}
+.lesson-list__item{background:var(--mk-white);border:1px solid var(--mk-grey-100);border-radius:var(--radius-md);padding:var(--space-4);margin-bottom:var(--space-3);display:flex;align-items:center;gap:var(--space-4);box-shadow:var(--shadow-sm);transition:box-shadow 0.15s ease}
+.lesson-list__item--clickable{cursor:pointer}
+.lesson-list__item--clickable:hover{box-shadow:var(--shadow-md);border-color:var(--mk-blue)}
+.lesson-list__item--locked{opacity:0.55}
+.lesson-list__item--done{background:var(--mk-success-bg);border-color:var(--mk-success)}
+.lesson-num{width:40px;height:40px;border-radius:50%;background:var(--mk-navy);color:var(--mk-white);display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:16px;flex-shrink:0}
+.lesson-list__item--done .lesson-num{background:var(--mk-success)}
+.lesson-list__item--locked .lesson-num{background:var(--mk-grey-400)}
+.lesson-info{flex:1;min-width:0}
+.lesson-info__title{font-weight:bold;color:var(--mk-navy);margin-bottom:2px;font-size:15px;line-height:1.3}
+.lesson-info__meta{font-size:13px;color:var(--mk-grey-400)}
+.lesson-status{font-size:13px;font-weight:bold;color:var(--mk-grey-400);flex-shrink:0;display:flex;align-items:center;gap:6px}
+.lesson-list__item--done .lesson-status{color:var(--mk-success)}
+.lesson-list__item--current{border-left:4px solid var(--mk-blue)}
+.lesson-list__item--current .lesson-status{color:var(--mk-blue)}
+.lock-icon{display:inline-block;width:14px;height:14px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%238B94A3' d='M10 2a4 4 0 0 0-4 4v2H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-1V6a4 4 0 0 0-4-4zm-2 6V6a2 2 0 1 1 4 0v2H8z'/></svg>");background-size:contain;background-repeat:no-repeat}
+.assessment-card{background:var(--mk-white);border:2px solid var(--mk-grey-200);border-radius:var(--radius-md);padding:var(--space-5);margin-top:var(--space-5);display:flex;align-items:center;gap:var(--space-4);box-shadow:var(--shadow-sm);transition:all 0.15s ease}
+.assessment-card--locked{opacity:0.7}
+.assessment-card--unlocked{border-color:var(--mk-gold);background:#FAF0D8;cursor:pointer}
+.assessment-card--unlocked:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.assessment-card__badge{width:48px;height:48px;border-radius:50%;background:var(--mk-grey-400);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--mk-white);font-weight:bold;font-size:18px}
+.assessment-card--unlocked .assessment-card__badge{background:var(--mk-gold);color:var(--mk-navy)}
+.assessment-card__body{flex:1;min-width:0}
+.assessment-card__title{font-weight:bold;color:var(--mk-navy);font-size:16px;margin-bottom:2px}
+.assessment-card__meta{font-size:13px;color:var(--mk-grey-700)}
+.assessment-card__action{font-size:13px;font-weight:bold;color:var(--mk-grey-400);flex-shrink:0}
+.assessment-card--unlocked .assessment-card__action{color:var(--mk-navy)}
+.progress{margin:var(--space-4) 0 var(--space-5) 0}
+.progress__label{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:var(--mk-grey-700);margin-bottom:6px}
+.progress__bar{width:100%;height:10px;background:var(--mk-grey-100);border-radius:100px;overflow:hidden}
+.progress__fill{height:100%;background:var(--mk-gold);border-radius:100px;width:0%;transition:width 0.3s ease}
+.progress__fill--complete{background:var(--mk-success)}
+.callout{border-left:4px solid var(--mk-blue);background:#EDF4FB;padding:var(--space-4);border-radius:var(--radius-sm);margin:var(--space-5) 0;font-size:15px}
+.callout--warning{border-left-color:var(--mk-amber);background:var(--mk-amber-bg)}
+.callout--gold{border-left-color:var(--mk-gold);background:#FAF0D8}
+.callout--success{border-left-color:var(--mk-success);background:var(--mk-success-bg)}
+.callout--do{border-left-color:var(--mk-success);background:var(--mk-success-bg)}
+.callout--dont{border-left-color:var(--mk-red);background:var(--mk-error-bg)}
+.callout__title{font-weight:bold;color:var(--mk-navy);margin-bottom:var(--space-2);display:block}
+.bullet-list{margin:0 0 var(--space-4) 0;padding-left:20px}
+.bullet-list li{margin-bottom:6px}
+.checklist{list-style:none;padding:0;margin:0 0 var(--space-4) 0}
+.checklist li{padding:var(--space-2) 0;display:flex;align-items:flex-start;gap:var(--space-3)}
+.checklist input[type="checkbox"]{width:22px;height:22px;accent-color:var(--mk-success);flex-shrink:0;margin-top:2px;cursor:pointer}
+.placeholder-box{background:var(--mk-grey-100);border:2px dashed var(--mk-grey-200);border-radius:var(--radius-md);padding:var(--space-5);text-align:center;color:var(--mk-grey-700);margin:var(--space-5) 0;font-size:14px}
+.placeholder-box strong{display:block;color:var(--mk-navy);margin-bottom:6px}
+.diagram-wrap{margin:var(--space-5) 0;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--mk-grey-200)}
+.diagram-wrap img{width:100%;height:auto;display:block}
+.diagram-wrap__caption{background:var(--mk-navy);color:var(--mk-white);padding:var(--space-3) var(--space-4);font-size:13px;font-weight:bold;text-align:center}
+.site-footer{text-align:center;padding:var(--space-6) var(--space-4);color:var(--mk-grey-400);font-size:13px;margin-top:var(--space-7)}
+.text-center{text-align:center}
+.mt-5{margin-top:var(--space-5)}
+.spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,0.3);border-top-color:var(--mk-white);border-radius:50%;animation:spin 0.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mcq-option{display:block;width:100%;text-align:left;padding:var(--space-4);margin-bottom:var(--space-2);background:var(--mk-white);border:2px solid var(--mk-grey-200);border-radius:var(--radius-md);font-family:inherit;font-size:15px;cursor:pointer;transition:all 0.15s ease}
+.mcq-option:hover{border-color:var(--mk-blue);background:#f0f6ff}
+.mcq-option--selected{border-color:var(--mk-blue);background:#e8f0fb}
+.mcq-option--correct{border-color:var(--mk-success);background:var(--mk-success-bg)}
+.mcq-option--incorrect{border-color:var(--mk-error);background:var(--mk-error-bg)}
+.mcq-option:disabled{cursor:default;opacity:0.9}
+.sa-field{margin-bottom:var(--space-5)}
+.sa-field label{display:block;font-weight:bold;margin-bottom:var(--space-2);color:var(--mk-navy)}
+.sa-field textarea{width:100%;min-height:100px;padding:var(--space-3);border:2px solid var(--mk-grey-200);border-radius:var(--radius-md);font-family:inherit;font-size:15px;resize:vertical}
+.sa-field textarea:focus{outline:none;border-color:var(--mk-blue);box-shadow:0 0 0 3px rgba(46,117,182,0.15)}
+.sa-criteria{background:var(--mk-amber-bg);border-left:4px solid var(--mk-gold);padding:var(--space-4);border-radius:var(--radius-sm);margin-top:var(--space-3);font-size:14px;display:none}
+.result-box{text-align:center;padding:var(--space-6);background:var(--mk-white);border-radius:var(--radius-lg);border:2px solid var(--mk-grey-200);box-shadow:var(--shadow-md)}
+.result-box--pass{border-color:var(--mk-success);background:var(--mk-success-bg)}
+.result-box--fail{border-color:var(--mk-error);background:var(--mk-error-bg)}
+.result-score{font-size:48px;font-weight:bold;color:var(--mk-navy)}
+.kc-question{background:var(--mk-white);border:1px solid var(--mk-grey-200);border-radius:var(--radius-md);padding:var(--space-4);margin-bottom:var(--space-4)}
+.kc-question__text{font-weight:bold;color:var(--mk-navy);margin-bottom:var(--space-3)}
+.action-plan-section{margin-bottom:var(--space-6)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="#" onclick="event.preventDefault();if(state.learner){showView('view-dashboard');renderDashboard();}">
+      <img src="MK_LOGO.png" alt="MK Global" class="brand__logo" onerror="this.style.display='none'">
+      <div class="brand__text">MK Global SA<br><span style="font-size:12px;font-weight:normal;opacity:0.8">Courier Driver Training</span></div>
+    </a>
+    <div class="header-progress" id="headerProgress"></div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ACCESS GATE -->
+<div class="view is-active" id="view-access">
+  <div class="card text-center">
+    <span class="eyebrow">Restricted access</span>
+    <h1 id="gate-title">Core Courier Driver Fundamentals</h1>
+    <p class="lead">Stream 1 of the Courier Driver Training programme</p>
+    <p id="gate-status">Checking your access...</p>
+    <div class="field" id="codeField" style="display:none;">
+      <label for="codeInput">Paste your access token</label>
+      <input type="text" id="codeInput" autocomplete="off" placeholder="Paste the token from your email">
+      <button class="btn btn--primary btn--full" id="codeSubmit" type="button">Verify</button>
+      <p class="field__hint text-center mt-5">You received this token by email after purchasing. <a href="https://mkglobal.co.za/products.html">Purchase this course</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION -->
+<div class="view" id="view-registration">
+  <div class="card">
+    <span class="eyebrow">Almost there</span>
+    <h1>Tell us about yourself</h1>
+    <p>Your name will appear on your certificate if you pass the assessment.</p>
+    <form id="regForm" novalidate>
+      <div class="field" id="regNameField">
+        <label for="regName">Full name</label>
+        <input type="text" id="regName" placeholder="e.g. Sipho Dlamini" autocomplete="name" required>
+        <div class="field__error">Please enter your full name.</div>
+      </div>
+      <div class="field" id="regEmailField">
+        <label for="regEmail">Email address</label>
+        <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email" required>
+        <div class="field__error">Please enter a valid email address.</div>
+      </div>
+      <div class="field" id="regCompanyField">
+        <label for="regCompany">Company (optional)</label>
+        <input type="text" id="regCompany" placeholder="e.g. FastTrack Couriers">
+      </div>
+      <button type="submit" class="btn btn--primary btn--full">Start the Course</button>
+    </form>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="view" id="view-dashboard">
+  <div class="card">
+    <span class="eyebrow">Stream 1: Core Courier Driver Fundamentals</span>
+    <h1>Your Course Dashboard</h1>
+    <p id="dashGreeting"></p>
+    <div class="progress">
+      <div class="progress__label"><span id="progressText">0 of 8 sessions complete</span><span id="progressPercent">0%</span></div>
+      <div class="progress__bar"><div class="progress__fill" id="progressFill" role="progressbar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"></div></div>
+    </div>
+    <h2 style="margin-top:var(--space-4)">Sessions</h2>
+    <ul class="lesson-list" id="lessonList"></ul>
+    <div class="assessment-card assessment-card--locked" id="assessmentCard">
+      <div class="assessment-card__badge" id="assessmentBadge">&#9734;</div>
+      <div class="assessment-card__body">
+        <div class="assessment-card__title">Final Assessment</div>
+        <div class="assessment-card__meta" id="assessmentMeta">15 questions, 80% pass mark. Complete all sessions to unlock.</div>
+      </div>
+      <div class="assessment-card__action" id="assessmentAction"><span class="lock-icon" aria-hidden="true"></span> Locked</div>
+    </div>
+    <div style="margin-top:var(--space-6);text-align:center">
+      <button class="btn btn--secondary" id="resetProgress" style="font-size:13px">Reset all progress</button>
+    </div>
+  </div>
+</div>
+
+<!-- SESSION VIEW -->
+<div class="view" id="view-lesson">
+  <div class="card">
+    <button class="btn btn--secondary" id="backToDash" style="margin-bottom:var(--space-4)">&larr; Back to Dashboard</button>
+    <span class="eyebrow" id="lessonEyebrow"></span>
+    <h1 id="lesson-title"></h1>
+    <div id="lessonBody"></div>
+  </div>
+</div>
+
+<!-- ASSESSMENT VIEW -->
+<div class="view" id="view-assessment">
+  <div class="card">
+    <button class="btn btn--secondary" id="backToDashFromAss" style="margin-bottom:var(--space-4)">&larr; Back to Dashboard</button>
+    <span class="eyebrow">Final Assessment</span>
+    <h1>Core Courier Driver Fundamentals</h1>
+    <div id="ass-intro">
+      <p class="lead">This assessment has 15 questions: 10 multiple choice and 5 short answer. You need 80% to pass and earn your Training Attended certificate.</p>
+      <div class="meta-row">
+        <span class="meta-pill">15 questions</span>
+        <span class="meta-pill">80% pass mark</span>
+        <span class="meta-pill">10 MCQ + 5 short answer</span>
+      </div>
+      <button class="btn btn--gold btn--full" id="startAssBtn">Begin Assessment</button>
+    </div>
+    <div id="ass-running" style="display:none"></div>
+    <div id="ass-result" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ACTION PLAN VIEW -->
+<div class="view" id="view-actionplan">
+  <div class="card">
+    <button class="btn btn--secondary" id="backToDashFromAP" style="margin-bottom:var(--space-4)">&larr; Back to Dashboard</button>
+    <span class="eyebrow">Your Action Plan</span>
+    <h1>Putting Your Training Into Practice</h1>
+    <p class="lead">Training only works if you use it. Fill in your commitments below and review them regularly.</p>
+    <div id="actionPlanBody"></div>
+  </div>
+</div>
+
+<!-- CERTIFICATE VIEW -->
+<div class="view" id="view-certificate">
+  <div class="card text-center">
+    <span class="eyebrow">Congratulations</span>
+    <h1>You passed!</h1>
+    <p id="certMessage"></p>
+    <div id="certPreview" style="margin:var(--space-5) 0;padding:var(--space-6);border:2px solid var(--mk-gold);border-radius:var(--radius-lg);background:var(--mk-white)">
+      <p style="font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--mk-grey-400);margin-bottom:var(--space-3)">MK Global SA (Pty) Ltd</p>
+      <h2 style="color:var(--mk-navy);margin-top:0">Certificate of Training Attended</h2>
+      <p style="font-size:15px;color:var(--mk-grey-700)">This certifies that</p>
+      <p style="font-size:24px;font-weight:bold;color:var(--mk-navy)" id="certName"></p>
+      <p style="font-size:15px;color:var(--mk-grey-700)">has completed the</p>
+      <p style="font-size:18px;font-weight:bold;color:var(--mk-blue)">Core Courier Driver Fundamentals</p>
+      <p style="font-size:15px;color:var(--mk-grey-700)">of the Courier Driver Training programme.</p>
+      <p style="font-size:13px;color:var(--mk-grey-400);margin-top:var(--space-5)">Date: <span id="certDate"></span> | Ref: <span id="certRef"></span></p>
+      <p style="font-size:11px;color:var(--mk-grey-400);margin-top:var(--space-3)">This certificate confirms attendance of a professional development programme. It is not a formal SAQA qualification and does not replace any licence, permit, or certificate required by law.</p>
+    </div>
+    <button class="btn btn--gold btn--full" id="downloadCert">Download Certificate (PDF)</button>
+    <p class="field__hint mt-5" id="emailStatus"></p>
+    <button class="btn btn--secondary btn--full mt-5" id="backToDashFromCert">&larr; Back to Dashboard</button>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 MK Global SA (Pty) Ltd. All rights reserved.<br>info@mkglobal.co.za</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+"use strict";
+
+/* ---- CONFIGURATION ---- */
+/* Token-based access, issued by the Paystack webhook after purchase.
+   See api/courses/webhook.js and api/courses/validate.js in the
+   mkglobal-website repo. PRODUCT_ID must match api/_lib/products.js. */
+const PRODUCT_ID = "courier-core";
+const VALIDATE_URL = "https://mkglobal.co.za/api/courses/validate";
+const BUY_URL = "https://mkglobal.co.za/products.html";
+const TOKEN_STORAGE_KEY = "mkg_access_token";
+
+function base64urlDecode(str) {
+  str = str.replace(/-/g, "+").replace(/_/g, "/");
+  while (str.length % 4) str += "=";
+  return atob(str);
+}
+
+const EMAILJS_CONFIG = {
+  enabled: false,
+  serviceId: "",
+  templateId: "",
+  publicKey: ""
+};
+
+const SESSIONS = [
+  { id: 1, title: "Road Safety and the Law",         minutes: 15 },
+  { id: 2, title: "Checking Your Vehicle",            minutes: 15 },
+  { id: 3, title: "Driving Safely",                   minutes: 15 },
+  { id: 4, title: "Lifting and Handling Safely",      minutes: 12 },
+  { id: 5, title: "Loading and Securing Your Vehicle", minutes: 15 },
+  { id: 6, title: "Looking After Customers",          minutes: 12 },
+  { id: 7, title: "Planning Your Route",              minutes: 12 },
+  { id: 8, title: "Emergencies and Accidents",        minutes: 15 }
+];
+
+/* ============================================================
+   SESSION CONTENT
+   Sourced from MK Global Core Courier Driver Fundamentals
+   Learner Workbook and Facilitator Guide.
+   ============================================================ */
+const SESSION_CONTENT = {
+1: {
+  intro: "Every time you get behind the wheel, you take on responsibility. You are responsible for your own safety, for the safety of the people around you, and for the goods you carry. The law expects this of every driver on the road.",
+  outcomes: [
+    "State the main duties of a driver under the National Road Traffic Act 93 of 1996.",
+    "Explain why a courier driver represents both themselves and their company on the road.",
+    "Describe the consequences of unsafe or unlawful driving for the driver, the company, and the public."
+  ],
+  sections: [
+    { h: "Your main duties as a driver", body: "<p>Under South African road traffic law, every driver must:</p><ul class='bullet-list'><li>Hold a valid driving licence for the vehicle you are driving.</li><li>Obey all the rules of the road.</li><li>Drive a vehicle that is roadworthy and safe.</li><li>Never drive under the influence of alcohol or drugs.</li><li>Stop and follow the correct steps if you are in an accident.</li></ul><p>These duties come from the National Road Traffic Act 93 of 1996. Breaking them can lead to fines, losing your licence, or worse, an accident that hurts someone.</p>" },
+    { h: "The driver as the face of the business", body: "<p>When a courier driver speeds through a school zone or parks dangerously, the public sees the company name on the vehicle. One careless driver can damage a reputation that took years to build.</p><p>As a professional courier driver, you represent your company at every stop, on every road, and with every interaction. How you drive, how you handle parcels, and how you treat people all reflect on the business.</p>" }
+  ],
+  notes: "Write down one thing you will do differently after this session:",
+  takeaway: "You are a professional with legal duties. The law holds you personally responsible for how you drive and what you do on the road. Your behaviour behind the wheel represents your company as much as it represents you."
+},
+2: {
+  intro: "A safe shift starts before you drive away. The pre-trip inspection is a quick check of your vehicle to catch problems before they become dangerous. Do it the same way, in the same order, every single shift.",
+  outcomes: [
+    "Carry out a structured walkaround inspection in the same order every time.",
+    "Identify common defects that make a vehicle unsafe or unroadworthy.",
+    "Know what to do when a defect is found, and why driving a defective vehicle is never acceptable."
+  ],
+  sections: [
+    { h: "The walkaround sequence", body: "<p>The routine has six stops. Always follow the same order so that nothing is missed. Start at one corner and work around the vehicle, then finish inside the cab.</p><div class='diagram-wrap'><img src='Diagram_1_PreTrip_Inspection.png' alt='Pre-Trip Walkaround Inspection: A 6-point check covering tyres and wheel nuts, lights and indicators, fluid leaks, mirrors and windscreen, load area and door locks, and cab interior.' loading='lazy'><div class='diagram-wrap__caption'>Pre-Trip Walkaround Inspection - A 6-Point Check for a Safe Journey</div></div>" },
+    { h: "Your daily pre-trip checklist", body: "<p>Tick each item before you drive. If anything is wrong and it affects safety, do not drive. Report it first.</p><ul class='checklist'><li><input type='checkbox'><span>Tyres: tread is good, no cuts or bulges, wheel nuts tight</span></li><li><input type='checkbox'><span>Lights: headlights, brake lights, indicators and hazards all work</span></li><li><input type='checkbox'><span>Under the vehicle: no fresh oil, coolant or brake fluid leaks</span></li><li><input type='checkbox'><span>Mirrors and windscreen: clean, not cracked, adjusted correctly</span></li><li><input type='checkbox'><span>Load area: doors close and lock, space is clean</span></li><li><input type='checkbox'><span>Brakes: feel firm when pressed</span></li><li><input type='checkbox'><span>Horn: works</span></li><li><input type='checkbox'><span>Seatbelt: works and is not damaged</span></li><li><input type='checkbox'><span>Dashboard: no warning lights staying on</span></li><li><input type='checkbox'><span>Fuel: enough for the shift ahead</span></li></ul>" }
+  ],
+  notes: "",
+  takeaway: "The pre-trip inspection is the first thing drivers skip under pressure, and that is exactly when defects slip through. Do it every day, the same way, in the same order."
+},
+3: {
+  intro: "Defensive driving means driving in a way that expects other people to make mistakes, and always leaving yourself enough space and time to react safely.",
+  outcomes: [
+    "Explain what defensive driving means and apply its main principles.",
+    "Identify common road hazards a courier driver faces and how to anticipate them.",
+    "Recognise the warning signs of fatigue and know how to respond."
+  ],
+  sections: [
+    { h: "The main habits of a defensive driver", body: "<ul class='bullet-list'><li>Keep a safe following distance from the vehicle in front.</li><li>Look far ahead, not just at the car directly in front of you.</li><li>Check your mirrors regularly so you always know what is around you.</li><li>Signal early so others can read your intentions.</li><li>Never assume another driver, cyclist or pedestrian has seen you.</li></ul>" },
+    { h: "Hazards a courier driver faces", body: "<p>Because you stop often and work in busy areas, watch especially for: pedestrians stepping out between parked cars, car doors opening suddenly, cyclists and motorcyclists in your blind spots, and tight spaces in residential streets and shopping centres.</p>" },
+    { h: "Fatigue: the hidden danger", body: "<p>Tiredness is one of the biggest risks on a long shift. Being very tired slows you down almost as much as alcohol does. Watch for these warning signs:</p><ul class='bullet-list'><li>Yawning over and over.</li><li>Heavy eyelids or struggling to focus.</li><li>Drifting in your lane.</li><li>Not remembering the last stretch of road you drove.</li></ul><div class='callout callout--warning'><span class='callout__title'>There is only one cure for fatigue</span>The only real cure for being tired is rest. Coffee and fresh air help for a few minutes only. If you are too tired to drive safely, stop.</div>" }
+  ],
+  notes: "When in your day do you feel least alert? What is one thing you will do to manage it?",
+  takeaway: "Defensive driving is not about being slow. It is about being prepared. Expect other road users to make mistakes and always leave yourself space to react."
+},
+4: {
+  intro: "A back injury is one of the most common reasons a delivery driver has to stop working. The good news is that most lifting injuries can be prevented by using the correct technique every time.",
+  outcomes: [
+    "Describe the risks of incorrect manual handling.",
+    "Demonstrate the safe lifting sequence.",
+    "Know when a load is too heavy to lift alone and what to do instead."
+  ],
+  sections: [
+    { h: "The safe lifting sequence", body: "<div class='diagram-wrap'><img src='Diagram_2_Safe_Lifting.png' alt='Safe Lifting Technique: Four steps - 1. Assess (check weight, plan route, get help if heavy), 2. Bend Your Knees (squat down, back straight, grip firmly), 3. Lift With Your Legs (push up with legs, hold load close, head up), 4. Turn Your Feet (move feet to turn, never twist back).' loading='lazy'><div class='diagram-wrap__caption'>Safe Lifting Technique - Four Steps to Protect Your Back</div></div>" },
+    { h: "The four steps", body: "<p><strong>1. Assess.</strong> Look at the load before you lift. How heavy is it? Where are you taking it? Is the path clear? If it is too heavy, get help.</p><p><strong>2. Bend your knees.</strong> Squat down with your back straight. Get a firm grip on the load.</p><p><strong>3. Lift with your legs.</strong> Push up using your strong leg muscles, not your back. Keep the load close to your body and keep your head up.</p><p><strong>4. Turn your feet.</strong> To change direction, move your feet. Never twist your back while carrying a load.</p><div class='callout callout--gold'><span class='callout__title'>The law backs you up</span>The Occupational Health and Safety Act 85 of 1993 places duties on employers to protect workers from injury, including from manual handling. But you also have a duty to work safely and to use the correct technique.</div>" }
+  ],
+  notes: "Write down the four steps of safe lifting from memory:",
+  takeaway: "Use the four-step technique on every lift, not just heavy ones. One bad lift can cause an injury that puts you off the road."
+},
+5: {
+  intro: "How you load your vehicle affects how safely it drives and whether your parcels arrive undamaged. A good load is balanced, secured, and organised.",
+  outcomes: [
+    "Load a delivery vehicle so that weight is correctly distributed.",
+    "Secure a load so it does not move in transit.",
+    "Handle fragile and awkward parcels to prevent damage."
+  ],
+  sections: [
+    { h: "The load-securing layout", body: "<div class='diagram-wrap'><img src='Diagram_3_Load_Securing.png' alt='Loading and Securing Your Load: Heavy items low and towards the front near the cab, medium items in the middle with weight balanced, light and fragile items on top. Secure with straps or cargo bars.' loading='lazy'><div class='diagram-wrap__caption'>Loading and Securing Your Load - Balance the Weight, Secure the Load</div></div>" },
+    { h: "The loading rules", body: "<ul class='bullet-list'><li>Place the heaviest parcels low and towards the front, near the cab. This keeps the vehicle balanced.</li><li>Spread the weight evenly. Do not load everything heavy on one side.</li><li>Put light and fragile parcels on top. Never put heavy items on top of light or fragile ones.</li><li>Secure the load with straps or cargo bars so nothing moves when you brake, turn, or climb a hill.</li><li>Where you can, load in the order you will deliver, so the first stop is easiest to reach.</li></ul><div class='callout'><span class='callout__title'>Regulation 246</span>Under Regulation 246 of the National Road Traffic Act 93 of 1996, every load must be properly secured so that it does not shift, fall off, or become a danger on the road.</div>" }
+  ],
+  notes: "",
+  takeaway: "A well-loaded vehicle drives better, protects parcels, and keeps you legal. Heavy items low and forward, everything secured, fragile items on top."
+},
+6: {
+  intro: "For most customers, you are the only person from the company they will ever meet. They judge the whole company on how you treat them at the door. That makes you very important.",
+  outcomes: [
+    "Explain why the driver is the most important customer touchpoint for a courier company.",
+    "Demonstrate a professional delivery interaction.",
+    "Handle complaints, refusals, and difficult situations calmly."
+  ],
+  sections: [
+    { h: "A good delivery interaction", body: "<ul class='bullet-list'><li>Greet the customer in a friendly way.</li><li>Confirm their name.</li><li>Handle the parcel with visible care.</li><li>Be patient while they sign or check the parcel.</li><li>Close politely and thank them.</li></ul><p>Small things matter: a smile, using the customer's name, carrying the parcel instead of tossing it. These moments build trust and repeat business.</p>" },
+    { h: "When things get difficult", body: "<p>Sometimes a customer is angry, refuses a delivery, or asks you to do something you should not. Stay calm and follow your company process.</p><div class='callout callout--gold'><span class='callout__title'>A professional phrase for difficult moments</span>Try: \"I understand this is frustrating. Let me see what I can do to sort this out for you.\" This shows empathy without making promises you cannot keep.</div>" }
+  ],
+  notes: "Write down one calm, professional phrase you can use when a customer is upset:",
+  takeaway: "You are the face of the business at every door. A professional, friendly interaction costs nothing and builds everything."
+},
+7: {
+  intro: "Good route planning saves time, saves fuel, and reduces stress. The goal is not to drive faster. The goal is to drive smarter, so you travel less and waste less time.",
+  outcomes: [
+    "Plan a delivery route that groups stops sensibly and saves time and fuel.",
+    "Use navigation tools effectively and safely.",
+    "Manage time across a full day of deliveries, including allowing for delays."
+  ],
+  sections: [
+    { h: "How to plan a good route", body: "<ul class='bullet-list'><li>Group your deliveries by area instead of crossing the city back and forth.</li><li>Think about traffic at different times of day and plan around it.</li><li>Load your vehicle in the order you will deliver.</li><li>Always leave some buffer time for delays you cannot predict.</li></ul><p>Navigation apps are useful, but they do not know about closed roads, tricky access points, or a customer's special instructions. Your own planning and local knowledge still matter. Always set up your navigation before you start driving, never while moving.</p>" },
+    { h: "Route planning worksheet", body: "<p>Use the spaces below to plan a practice round. List your stops in the order you will deliver them and note anything special about each one.</p><div class='sa-field'><label>Stop 1</label><textarea placeholder='Address and notes...'></textarea></div><div class='sa-field'><label>Stop 2</label><textarea placeholder='Address and notes...'></textarea></div><div class='sa-field'><label>Stop 3</label><textarea placeholder='Address and notes...'></textarea></div><div class='sa-field'><label>Stop 4</label><textarea placeholder='Address and notes...'></textarea></div><div class='sa-field'><label>Stop 5</label><textarea placeholder='Address and notes...'></textarea></div>" }
+  ],
+  notes: "",
+  takeaway: "Plan before you drive. Group stops by area, allow buffer time, and use navigation apps as a tool, not a replacement for thinking."
+},
+8: {
+  intro: "Nobody plans to have an accident. But if you know exactly what to do before it happens, you will act correctly even under pressure. Panic causes mistakes. A clear plan prevents them.",
+  outcomes: [
+    "Follow the correct sequence of actions after an accident.",
+    "Understand their legal duty to report certain accidents.",
+    "Know what to keep in the vehicle and what never to do at the scene."
+  ],
+  sections: [
+    { h: "The order of actions", body: "<div class='diagram-wrap'><img src='Diagram_4_Incident_Response.png' alt='Incident Response: 5 steps in order - 1. Stop and Stay Calm (hazard lights, do not drive away), 2. Check for Injuries (call 112 or 10111), 3. Make the Scene Safe (warning triangle, keep clear), 4. Report to Your Dispatcher (phone in, follow instructions), 5. Record the Details (photos, other driver details, time, place, witnesses).' loading='lazy'><div class='diagram-wrap__caption'>Incident Response - What to Do First, in the Right Order</div></div><p><strong>1. Stop and stay calm.</strong> Switch on your hazard lights. Do not drive away.</p><p><strong>2. Check for injuries.</strong> If anyone is hurt, call emergency services straight away on 112 or 10111.</p><p><strong>3. Make the scene safe.</strong> Put out your warning triangle and keep clear of traffic.</p><p><strong>4. Report to your dispatcher.</strong> Phone in immediately and follow your company instructions.</p><p><strong>5. Record the details.</strong> Take photos, get the other driver's details, and note the time, place, and any witnesses.</p>" },
+    { h: "What to keep in your cab", body: "<ul class='checklist'><li><input type='checkbox'><span>First aid kit</span></li><li><input type='checkbox'><span>Warning triangle</span></li><li><input type='checkbox'><span>Emergency phone numbers</span></li><li><input type='checkbox'><span>Pen and notepad</span></li><li><input type='checkbox'><span>Charged phone</span></li></ul>" }
+  ],
+  notes: "",
+  takeaway: "People first, property second. Stop, check for injuries, make the scene safe, report, record. That order matters."
+}
+};
+
+/* ============================================================
+   KNOWLEDGE CHECKS (formative, per session)
+   3 questions per session, must get all correct to complete session
+   ============================================================ */
+const KNOWLEDGE_CHECKS = {
+1: [
+  { q: "Under which Act are your main duties as a driver defined?", opts: ["Occupational Health and Safety Act","Consumer Protection Act","National Road Traffic Act 93 of 1996"], correct: 2 },
+  { q: "What can breaking road traffic rules lead to?", opts: ["A warning letter from your company only","Fines, losing your licence, or causing an accident","A small fine but no other consequences"], correct: 1 },
+  { q: "Why does a courier driver represent the company?", opts: ["Because drivers wear uniforms","Because customers judge the company on the driver interaction","Because the driver owns the vehicle"], correct: 1 }
+],
+2: [
+  { q: "When should you do a pre-trip inspection?", opts: ["Once a week","Before every shift","Only when the vehicle looks damaged"], correct: 1 },
+  { q: "What should you do if a safety defect is found during the inspection?", opts: ["Drive carefully and report it later","Do not drive; report the defect first","Ignore it if it is minor"], correct: 1 },
+  { q: "Why should the inspection follow the same order every time?", opts: ["It is faster","So that nothing is missed","It is a legal requirement to follow a set order"], correct: 1 }
+],
+3: [
+  { q: "What is the only real cure for driver fatigue?", opts: ["Coffee","Rest","Opening the window"], correct: 1 },
+  { q: "What does defensive driving mean?", opts: ["Driving slowly at all times","Expecting others to make mistakes and leaving space to react","Always letting other vehicles go first"], correct: 1 },
+  { q: "Which of these is a warning sign of fatigue?", opts: ["Feeling hungry","Drifting in your lane","Listening to loud music"], correct: 1 }
+],
+4: [
+  { q: "What is the first step of the safe lifting sequence?", opts: ["Bend your knees","Assess the load","Lift with your legs"], correct: 1 },
+  { q: "When changing direction while carrying a load, you should:", opts: ["Twist your back smoothly","Throw the load the last short distance","Move your feet to turn, never twist your back"], correct: 2 },
+  { q: "Which muscles should you use to lift?", opts: ["Back muscles","Arm muscles","Leg muscles"], correct: 2 }
+],
+5: [
+  { q: "Where should the heaviest parcels go in the load area?", opts: ["On top for easy access","Low and towards the front, near the cab","At the back of the vehicle"], correct: 1 },
+  { q: "Why should you secure the load with straps or cargo bars?", opts: ["To make the vehicle look tidy","So nothing moves when you brake, turn, or climb a hill","It is only needed for fragile items"], correct: 1 },
+  { q: "Under which regulation must loads be properly secured?", opts: ["Regulation 274","Regulation 246 of the National Road Traffic Act","The Consumer Protection Act"], correct: 1 }
+],
+6: [
+  { q: "Why is the driver the most important customer touchpoint?", opts: ["Because drivers set the delivery price","Because the driver is the only person from the company most customers meet","Because drivers handle complaints officially"], correct: 1 },
+  { q: "What is the professional response when a customer is angry?", opts: ["Explain it is not your fault","Stay calm, listen, and follow your company process","Argue your case so they understand"], correct: 1 },
+  { q: "What should you do with the parcel at the door?", opts: ["Leave it on the ground and walk away","Handle it with visible care","Toss it to save time"], correct: 1 }
+],
+7: [
+  { q: "What is the main benefit of grouping deliveries by area?", opts: ["It lets you drive faster","It saves time, fuel, and reduces stress","It means you can skip planning"], correct: 1 },
+  { q: "When should you set up your navigation device?", opts: ["While driving in light traffic","At traffic lights","Before you start driving, while safely stopped"], correct: 2 },
+  { q: "Why should you leave buffer time in your route?", opts: ["To take longer breaks","For delays you cannot predict","To fit in personal errands"], correct: 1 }
+],
+8: [
+  { q: "After an accident, what should you do first?", opts: ["Photograph the damage","Move your vehicle out of the way","Stop, stay calm, and switch on hazard lights"], correct: 2 },
+  { q: "If someone is injured, what is the emergency number?", opts: ["10111 or 112","0800 555 555","086 1234 567"], correct: 0 },
+  { q: "What comes before recording details at an accident scene?", opts: ["Nothing, recording comes first","Checking for injuries and making the scene safe","Moving the parcels to safety"], correct: 1 }
+]
+};
+
+/* ============================================================
+   ASSESSMENT - MCQ answer keys (obfuscated via hashing)
+   ============================================================ */
+const MCQ_QUESTIONS = [
+  { q: "You notice a brake light is not working before your shift. What should you do?", opts: ["Drive carefully and get it fixed next week","Report the defect; the vehicle should not be driven until it is safe","Cover the deliveries first, then report it"] },
+  { q: "You are involved in a minor accident with no injuries. What must you NOT do?", opts: ["Switch on your hazard lights","Take photos of the damage","Leave the scene and report it later"] },
+  { q: "What is the correct way to lift a parcel from the ground?", opts: ["Bend at the waist and lift quickly","Bend your knees, keep your back straight, and lift with your legs","Lift with straight legs to protect your knees"] },
+  { q: "Where should the heaviest parcels go in the load area?", opts: ["On top, so they are easy to reach","Spread randomly to fill the space","Low and towards the front, near the cab"] },
+  { q: "You start to feel very tired on a long shift. What is the only real cure?", opts: ["A strong cup of coffee","Rest","Opening the window for fresh air"] },
+  { q: "You are carrying a heavy parcel and need to turn to put it down. What should you do?", opts: ["Twist your back smoothly to face the other way","Throw the parcel the last short distance","Move your feet to turn; do not twist your back"] },
+  { q: "A customer is angry that their parcel is late. What is the professional response?", opts: ["Explain it is not your fault and the office is to blame","Stay calm, listen, and follow your company process","Argue your case so they understand"] },
+  { q: "When is it acceptable to use your delivery device while driving?", opts: ["Never while moving; set it up while safely stopped","At low speed in quiet areas","At traffic lights when stopped briefly"] },
+  { q: "At an accident scene where someone is injured, what comes first?", opts: ["Photographing the damage to the parcels","Moving your vehicle out of the way","Checking for injuries and calling for help"] },
+  { q: "Why is it best to group your delivery stops by area?", opts: ["It lets you drive faster between stops","It saves time, distance, and fuel","It means you can skip route planning"] }
+];
+
+// Answer verification - keys stored as pre-computed base64
+const MCQ_KEYS_ENC = ["MDox","MToy","Mjox","Mzoy","NDox","NToy","Njox","Nzow","ODoy","OTox"];
+
+function checkMCQ(qIdx, selectedIdx) {
+  return btoa(qIdx + ":" + selectedIdx) === MCQ_KEYS_ENC[qIdx];
+}
+
+const SA_QUESTIONS = [
+  { q: "List four things you would check during a pre-trip inspection.", criteria: "Award marks for any four correct checks: tyres and wheel nuts, lights and indicators, fluid leaks under the vehicle, mirrors and windscreen, load area and door locks, brakes, horn, seatbelt, dashboard warning lights, fuel level." },
+  { q: "Describe the safe lifting sequence in your own words.", criteria: "Key elements: assess the load first, bend at the knees with a straight back, lift using the legs while holding the load close, and turn by moving the feet rather than twisting. Full marks require the key idea of lifting with the legs and not the back." },
+  { q: "A customer is angry that their parcel is late. Describe how you would handle it.", criteria: "Award marks for: staying calm, listening without arguing, not taking it personally, apologising for the inconvenience without making promises the company cannot keep, and following the correct company process or escalation." },
+  { q: "Explain why heavy parcels should be loaded low and towards the front of the vehicle.", criteria: "Award marks for: protecting the balance and handling of the vehicle, keeping weight stable, and preventing heavy items from crushing lighter ones or shifting dangerously in transit." },
+  { q: "List, in order, the first three things you should do if you are involved in an accident.", criteria: "Award marks for the correct order: first stop, stay calm and switch on hazard lights; second, check for injuries and call for help if needed; third, make the scene safe. The order matters: people before property." }
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const STORAGE_KEY = "mkg_courier_core_state";
+const defaultState = {
+  accessGranted: false,
+  accessCodeUsed: null,
+  learner: null,
+  completedSessions: [],
+  finalResult: null
+};
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return structuredClone(defaultState);
+    return Object.assign(structuredClone(defaultState), JSON.parse(raw));
+  } catch(e) { return structuredClone(defaultState); }
+}
+function saveState(s) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {}
+}
+let state = loadState();
+
+function showView(id) {
+  document.querySelectorAll(".view").forEach(v => v.classList.remove("is-active"));
+  const next = document.getElementById(id);
+  if (next) { next.classList.add("is-active"); window.scrollTo({ top: 0, behavior: "smooth" }); }
+}
+
+function route() {
+  if (!state.accessGranted) { showView("view-access"); return; }
+  if (!state.learner)        { showView("view-registration"); return; }
+  showView("view-dashboard");
+  renderDashboard();
+}
+
+/* ---- ACCESS TOKEN GATE ---- */
+async function wireAccessGate() {
+  const gateStatus = document.getElementById("gate-status");
+  const gateForm = document.getElementById("codeField");
+  const input = document.getElementById("codeInput");
+  const submit = document.getElementById("codeSubmit");
+
+  submit.addEventListener("click", () => validateAndGrant(input.value.trim()));
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") validateAndGrant(input.value.trim());
+  });
+
+  // Already granted? Confirm the stored token has not expired before
+  // trusting it, an expired token must re-gate rather than stay open.
+  if (state.accessGranted) {
+    const stored = localStorage.getItem(TOKEN_STORAGE_KEY);
+    if (stored) {
+      try {
+        const payload = JSON.parse(base64urlDecode(stored.split(".")[0]));
+        if (payload.exp && payload.exp < Date.now()) {
+          state.accessGranted = false;
+          saveState(state);
+          localStorage.removeItem(TOKEN_STORAGE_KEY);
+        } else {
+          return;
+        }
+      } catch {
+        state.accessGranted = false;
+        saveState(state);
+        localStorage.removeItem(TOKEN_STORAGE_KEY);
+      }
+    } else {
+      return;
+    }
+  }
+
+  // Check the URL for the ?token= param from the purchase email link.
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get("token");
+
+  if (token) {
+    await validateAndGrant(token);
+  } else {
+    if (gateStatus) gateStatus.textContent = "Enter the access token from your purchase email.";
+    if (gateForm) gateForm.style.display = "block";
+  }
+}
+
+async function validateAndGrant(token) {
+  const gateStatus = document.getElementById("gate-status");
+  const gateForm = document.getElementById("codeField");
+  const submit = document.getElementById("codeSubmit");
+
+  if (!token) {
+    if (gateStatus) gateStatus.textContent = "Enter the access token from your purchase email.";
+    if (gateForm) gateForm.style.display = "block";
+    return;
+  }
+
+  if (gateStatus) gateStatus.textContent = "Validating your access...";
+  if (gateForm) gateForm.style.display = "none";
+  if (submit) { submit.disabled = true; submit.textContent = "Checking..."; }
+
+  try {
+    const res = await fetch(
+      VALIDATE_URL + "?token=" + encodeURIComponent(token) +
+      "&productId=" + encodeURIComponent(PRODUCT_ID)
+    );
+    const data = await res.json();
+
+    if (data.valid) {
+      state.accessGranted = true;
+      state.accessCodeUsed = token;
+      saveState(state);
+      localStorage.setItem(TOKEN_STORAGE_KEY, token);
+      const clean = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, "", clean);
+      showView("view-registration");
+    } else {
+      if (gateStatus) gateStatus.textContent =
+        "This access link is " + (data.reason && data.reason.toLowerCase().includes("expired") ? "expired" : "not valid") +
+        ". Purchase the course or paste your token below.";
+      if (gateForm) gateForm.style.display = "block";
+      if (submit) { submit.disabled = false; submit.textContent = "Verify"; }
+    }
+  } catch {
+    if (gateStatus) gateStatus.textContent =
+      "Could not verify your access. Check your connection and try again.";
+    if (gateForm) gateForm.style.display = "block";
+    if (submit) { submit.disabled = false; submit.textContent = "Verify"; }
+  }
+}
+
+/* Registration */
+function wireRegistration() {
+  const form = document.getElementById("regForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fields = {
+      regName:  { el: document.getElementById("regName"),  wrap: document.getElementById("regNameField"),  validate: v => v.trim().length >= 2 },
+      regEmail: { el: document.getElementById("regEmail"), wrap: document.getElementById("regEmailField"), validate: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) }
+    };
+    let allValid = true;
+    Object.values(fields).forEach(f => {
+      const ok = f.validate(f.el.value);
+      f.wrap.classList.toggle("field--error", !ok);
+      if (!ok) allValid = false;
+    });
+    if (!allValid) return;
+    state.learner = {
+      name: fields.regName.el.value.trim(),
+      email: fields.regEmail.el.value.trim(),
+      company: document.getElementById("regCompany").value.trim(),
+      enrolledAt: new Date().toISOString()
+    };
+    saveState(state);
+    renderDashboard();
+    showView("view-dashboard");
+  });
+}
+
+/* Dashboard */
+function renderDashboard() {
+  if (!state.learner) return;
+  const greeting = document.getElementById("dashGreeting");
+  const firstName = state.learner.name.split(" ")[0];
+  greeting.textContent = "Welcome, " + firstName + ". Work through the sessions in order. Your progress is saved on this device automatically.";
+  const list = document.getElementById("lessonList");
+  list.innerHTML = "";
+  let currentId = null;
+  for (let i = 0; i < SESSIONS.length; i++) {
+    const s = SESSIONS[i];
+    const prevDone = i === 0 || state.completedSessions.includes(SESSIONS[i-1].id);
+    if (prevDone && !state.completedSessions.includes(s.id)) { currentId = s.id; break; }
+  }
+  SESSIONS.forEach((session, idx) => {
+    const isDone = state.completedSessions.includes(session.id);
+    const isUnlocked = idx === 0 || state.completedSessions.includes(SESSIONS[idx-1].id);
+    const isCurrent = session.id === currentId;
+    const li = document.createElement("li");
+    li.className = "lesson-list__item";
+    if (isDone) li.classList.add("lesson-list__item--done");
+    if (!isUnlocked) li.classList.add("lesson-list__item--locked");
+    if (isUnlocked) li.classList.add("lesson-list__item--clickable");
+    if (isCurrent) li.classList.add("lesson-list__item--current");
+    let statusHtml;
+    if (isDone) statusHtml = "Complete &#10003;";
+    else if (isCurrent) statusHtml = "Start &rsaquo;";
+    else if (isUnlocked) statusHtml = "Open";
+    else statusHtml = '<span class="lock-icon" aria-hidden="true"></span> Locked';
+    const numContent = isDone ? "&#10003;" : session.id;
+    li.innerHTML =
+      '<div class="lesson-num" aria-hidden="true">' + numContent + '</div>' +
+      '<div class="lesson-info">' +
+      '  <div class="lesson-info__title">Session ' + session.id + ': ' + session.title + '</div>' +
+      '  <div class="lesson-info__meta">About ' + session.minutes + ' minutes</div>' +
+      '</div>' +
+      '<div class="lesson-status">' + statusHtml + '</div>';
+    if (isUnlocked) {
+      li.setAttribute("tabindex", "0");
+      li.setAttribute("role", "button");
+      li.setAttribute("aria-label", (isDone ? "Review " : "Open ") + "Session " + session.id + ": " + session.title);
+      li.addEventListener("click", () => openSession(session.id));
+      li.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSession(session.id); } });
+    } else li.setAttribute("aria-disabled", "true");
+    list.appendChild(li);
+  });
+  const allDone = SESSIONS.every(s => state.completedSessions.includes(s.id));
+  const card = document.getElementById("assessmentCard");
+  card.classList.toggle("assessment-card--unlocked", allDone);
+  card.classList.toggle("assessment-card--locked", !allDone);
+  const badge = document.getElementById("assessmentBadge");
+  const meta = document.getElementById("assessmentMeta");
+  const action = document.getElementById("assessmentAction");
+  if (allDone) {
+    badge.innerHTML = "&#9733;";
+    meta.textContent = "15 questions, 80% pass mark. Pass to earn your Certificate of Training Attended.";
+    action.innerHTML = "Start &rsaquo;";
+    card.setAttribute("tabindex", "0"); card.setAttribute("role", "button");
+    card.setAttribute("aria-label", "Start the final assessment");
+  } else {
+    const remaining = SESSIONS.length - state.completedSessions.length;
+    badge.innerHTML = "&#9734;";
+    meta.textContent = "15 questions, 80% pass mark. " + remaining + " session" + (remaining === 1 ? "" : "s") + " left to unlock.";
+    action.innerHTML = '<span class="lock-icon" aria-hidden="true"></span> Locked';
+    card.setAttribute("tabindex", "-1"); card.removeAttribute("role");
+  }
+  const done = state.completedSessions.length;
+  const pct = Math.round((done / SESSIONS.length) * 100);
+  document.getElementById("progressText").textContent = done + " of " + SESSIONS.length + " sessions complete";
+  document.getElementById("progressPercent").textContent = pct + "%";
+  const fill = document.getElementById("progressFill");
+  fill.style.width = pct + "%";
+  fill.setAttribute("aria-valuenow", String(done));
+  fill.classList.toggle("progress__fill--complete", done === SESSIONS.length);
+  document.getElementById("headerProgress").textContent = done + " / " + SESSIONS.length + " sessions";
+}
+
+/* Session view */
+let currentSessionId = null;
+function renderSessionBody(id) {
+  const c = SESSION_CONTENT[id];
+  const body = document.getElementById("lessonBody");
+  if (!c) { body.innerHTML = "<p>Session content coming soon.</p>"; return; }
+  let html = "";
+  html += '<p class="lead">' + c.intro + '</p>';
+  html += '<h2>What you will learn</h2><ul class="outcomes">';
+  c.outcomes.forEach(o => { html += '<li>' + o + '</li>'; });
+  html += '</ul>';
+  c.sections.forEach(s => { html += '<h2>' + s.h + '</h2>' + s.body; });
+  if (c.notes) {
+    html += '<h2>My notes</h2><div class="sa-field"><textarea placeholder="' + c.notes.replace(/"/g, '&quot;') + '"></textarea></div>';
+  }
+  html += '<div class="callout callout--success"><span class="callout__title">Key takeaway</span>' + c.takeaway + '</div>';
+  // Knowledge check
+  html += '<div id="kc-block-' + id + '" style="' + (state.completedSessions.includes(id) ? '' : 'display:none') + '">';
+  html += '<h2>Knowledge Check</h2><p>Answer all three questions correctly to complete this session.</p>';
+  html += '<div id="kc-container-' + id + '"></div>';
+  html += '</div>';
+  // Complete button (shows knowledge check if not already done)
+  if (!state.completedSessions.includes(id)) {
+    html += '<div id="complete-btn-wrap-' + id + '" style="margin-top:var(--space-5)"><button class="btn btn--gold btn--full" id="completeBtn-' + id + '">I have finished reading - take the knowledge check</button></div>';
+  }
+  body.innerHTML = html;
+  // Wire complete button
+  const btn = document.getElementById("completeBtn-" + id);
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const kcBlock = document.getElementById("kc-block-" + id);
+      if (kcBlock) { kcBlock.style.display = "block"; kcBlock.scrollIntoView({ behavior: "smooth" }); }
+      btn.parentElement.style.display = "none";
+      renderKnowledgeCheck(id);
+    });
+  }
+  // If already completed, render KC as passed
+  if (state.completedSessions.includes(id)) {
+    renderKnowledgeCheck(id, true);
+  }
+}
+
+function renderKnowledgeCheck(id, alreadyPassed) {
+  const container = document.getElementById("kc-container-" + id);
+  if (!container) return;
+  const checks = KNOWLEDGE_CHECKS[id];
+  if (!checks) return;
+  if (alreadyPassed) {
+    container.innerHTML = '<div class="callout callout--success"><span class="callout__title">Knowledge check passed</span>You have already completed this session.</div>';
+    return;
+  }
+  let html = "";
+  checks.forEach((ck, qi) => {
+    html += '<div class="kc-question" id="kc-q-' + id + '-' + qi + '">';
+    html += '<div class="kc-question__text">' + (qi+1) + '. ' + ck.q + '</div>';
+    ck.opts.forEach((opt, oi) => {
+      html += '<button class="mcq-option" data-sid="' + id + '" data-qi="' + qi + '" data-oi="' + oi + '">' + opt + '</button>';
+    });
+    html += '</div>';
+  });
+  html += '<div id="kc-result-' + id + '" style="margin-top:var(--space-4)"></div>';
+  container.innerHTML = html;
+  const kcState = { answers: {}, locked: {} };
+  container.querySelectorAll(".mcq-option").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const sid = parseInt(btn.dataset.sid);
+      const qi = parseInt(btn.dataset.qi);
+      const oi = parseInt(btn.dataset.oi);
+      if (kcState.locked[qi]) return;
+      kcState.answers[qi] = oi;
+      // Highlight selected
+      container.querySelectorAll('[data-sid="' + sid + '"][data-qi="' + qi + '"]').forEach(b => b.classList.remove("mcq-option--selected"));
+      btn.classList.add("mcq-option--selected");
+      // Check if all answered
+      if (Object.keys(kcState.answers).length === checks.length) {
+        let allCorrect = true;
+        checks.forEach((ck, i) => {
+          kcState.locked[i] = true;
+          const selected = kcState.answers[i];
+          container.querySelectorAll('[data-sid="' + sid + '"][data-qi="' + i + '"]').forEach(b => {
+            b.disabled = true;
+            const boi = parseInt(b.dataset.oi);
+            if (boi === ck.correct) b.classList.add("mcq-option--correct");
+            if (boi === selected && boi !== ck.correct) { b.classList.add("mcq-option--incorrect"); allCorrect = false; }
+          });
+        });
+        const resultDiv = document.getElementById("kc-result-" + id);
+        if (allCorrect) {
+          if (!state.completedSessions.includes(id)) {
+            state.completedSessions.push(id);
+            saveState(state);
+          }
+          resultDiv.innerHTML = '<div class="callout callout--success"><span class="callout__title">All correct!</span>Session complete. Return to the dashboard to continue.</div><button class="btn btn--primary btn--full mt-5" onclick="showView(\'view-dashboard\');renderDashboard();">Back to Dashboard</button>';
+        } else {
+          resultDiv.innerHTML = '<div class="callout callout--warning"><span class="callout__title">Not quite</span>Review the correct answers above and try again.</div><button class="btn btn--secondary btn--full mt-5" onclick="renderKnowledgeCheck(' + id + ')">Try Again</button>';
+        }
+      }
+    });
+  });
+}
+
+function openSession(id) {
+  const session = SESSIONS.find(s => s.id === id);
+  if (!session) return;
+  currentSessionId = id;
+  document.getElementById("lessonEyebrow").textContent = "Session " + session.id + " of " + SESSIONS.length;
+  document.getElementById("lesson-title").textContent = session.title;
+  renderSessionBody(id);
+  showView("view-lesson");
+}
+
+function wireSessionView() {
+  document.getElementById("backToDash").addEventListener("click", () => { showView("view-dashboard"); renderDashboard(); });
+}
+
+/* Dashboard actions */
+function wireDashboardActions() {
+  document.getElementById("resetProgress").addEventListener("click", () => {
+    if (confirm("This will erase your registration and all progress on this device. Are you sure?")) {
+      state = structuredClone(defaultState); saveState(state);
+      currentSessionId = null;
+      document.getElementById("headerProgress").textContent = "";
+      document.getElementById("regForm").reset();
+      document.getElementById("codeInput").value = "";
+      document.getElementById("gate-status").textContent = "Enter the access token from your purchase email.";
+      document.getElementById("codeField").style.display = "block";
+      showView("view-access");
+    }
+  });
+  const ac = document.getElementById("assessmentCard");
+  function startAssessmentIfUnlocked() {
+    if (!ac.classList.contains("assessment-card--unlocked")) return;
+    const intro = document.getElementById("ass-intro");
+    const running = document.getElementById("ass-running");
+    const result = document.getElementById("ass-result");
+    if (intro) intro.style.display = "block";
+    if (running) running.style.display = "none";
+    if (result) result.style.display = "none";
+    showView("view-assessment");
+  }
+  ac.addEventListener("click", startAssessmentIfUnlocked);
+  ac.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); startAssessmentIfUnlocked(); } });
+}
+
+/* Assessment */
+function wireAssessment() {
+  document.getElementById("backToDashFromAss").addEventListener("click", () => { showView("view-dashboard"); renderDashboard(); });
+  document.getElementById("startAssBtn").addEventListener("click", () => {
+    document.getElementById("ass-intro").style.display = "none";
+    document.getElementById("ass-running").style.display = "block";
+    renderAssessment();
+  });
+}
+
+function renderAssessment() {
+  const container = document.getElementById("ass-running");
+  let html = '<h2>Part A: Multiple Choice (10 questions)</h2>';
+  MCQ_QUESTIONS.forEach((mcq, qi) => {
+    html += '<div class="kc-question" id="ass-mcq-' + qi + '">';
+    html += '<div class="kc-question__text">' + (qi+1) + '. ' + mcq.q + '</div>';
+    mcq.opts.forEach((opt, oi) => {
+      html += '<button class="mcq-option" data-qi="' + qi + '" data-oi="' + oi + '">' + String.fromCharCode(65 + oi) + ') ' + opt + '</button>';
+    });
+    html += '</div>';
+  });
+  html += '<h2>Part B: Short Answer (5 questions)</h2><p>Answer in your own words.</p>';
+  SA_QUESTIONS.forEach((sa, si) => {
+    html += '<div class="sa-field" id="ass-sa-' + si + '"><label>' + (11 + si) + '. ' + sa.q + '</label><textarea id="sa-answer-' + si + '" placeholder="Write your answer here..."></textarea><div class="sa-criteria" id="sa-criteria-' + si + '"><strong>Marking criteria:</strong> ' + sa.criteria + '</div></div>';
+  });
+  html += '<button class="btn btn--gold btn--full mt-5" id="submitAssBtn">Submit Assessment</button>';
+  container.innerHTML = html;
+  // MCQ selection
+  const mcqAnswers = {};
+  container.querySelectorAll(".mcq-option").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const qi = parseInt(btn.dataset.qi);
+      const oi = parseInt(btn.dataset.oi);
+      mcqAnswers[qi] = oi;
+      container.querySelectorAll('[data-qi="' + qi + '"]').forEach(b => b.classList.remove("mcq-option--selected"));
+      btn.classList.add("mcq-option--selected");
+    });
+  });
+  // Submit
+  document.getElementById("submitAssBtn").addEventListener("click", () => {
+    // Check all MCQs answered
+    if (Object.keys(mcqAnswers).length < MCQ_QUESTIONS.length) {
+      alert("Please answer all 10 multiple choice questions before submitting.");
+      return;
+    }
+    // Score MCQs
+    let mcqScore = 0;
+    MCQ_QUESTIONS.forEach((mcq, qi) => {
+      const selected = mcqAnswers[qi];
+      const isCorrect = checkMCQ(qi, selected);
+      container.querySelectorAll('[data-qi="' + qi + '"]').forEach(b => {
+        b.disabled = true;
+        const boi = parseInt(b.dataset.oi);
+        if (checkMCQ(qi, boi)) b.classList.add("mcq-option--correct");
+        if (boi === selected && !checkMCQ(qi, boi)) b.classList.add("mcq-option--incorrect");
+      });
+      if (isCorrect) mcqScore++;
+    });
+    // Show SA criteria
+    SA_QUESTIONS.forEach((sa, si) => {
+      document.getElementById("sa-criteria-" + si).style.display = "block";
+    });
+    // Hide submit, show result
+    document.getElementById("submitAssBtn").style.display = "none";
+    const passed = mcqScore >= 8;
+    state.finalResult = { mcqScore: mcqScore, total: 10, passed: passed, date: new Date().toISOString() };
+    saveState(state);
+    const resultDiv = document.getElementById("ass-result");
+    resultDiv.style.display = "block";
+    let resultHtml = '<div class="result-box ' + (passed ? 'result-box--pass' : 'result-box--fail') + '">';
+    resultHtml += '<div class="result-score">' + mcqScore + ' / 10</div>';
+    resultHtml += '<p style="font-size:18px;font-weight:bold;margin-top:var(--space-3)">' + (passed ? 'You passed!' : 'Not yet') + '</p>';
+    if (passed) {
+      resultHtml += '<p>You scored ' + mcqScore + ' out of 10 on the multiple choice section. Review the short answer marking criteria above to self-assess your written answers.</p>';
+      resultHtml += '<button class="btn btn--gold btn--full mt-5" onclick="showCertificate()">View Your Certificate</button>';
+    } else {
+      resultHtml += '<p>You scored ' + mcqScore + ' out of 10. You need at least 8 out of 10 to pass. Review the content and try again.</p>';
+      resultHtml += '<button class="btn btn--secondary btn--full mt-5" onclick="showView(\'view-dashboard\');renderDashboard();">Back to Dashboard</button>';
+    }
+    resultHtml += '</div>';
+    resultDiv.innerHTML = resultHtml;
+    resultDiv.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
+/* Certificate */
+function showCertificate() {
+  if (!state.learner || !state.finalResult || !state.finalResult.passed) return;
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("en-ZA", { year: "numeric", month: "long", day: "numeric" });
+  const yy = String(now.getFullYear()).slice(-2);
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const rand = String(Math.floor(10000 + Math.random() * 90000));
+  const certRef = "MKG-" + yy + mm + dd + "-" + rand;
+  document.getElementById("certName").textContent = state.learner.name;
+  document.getElementById("certDate").textContent = dateStr;
+  document.getElementById("certRef").textContent = certRef;
+  document.getElementById("certMessage").textContent = "Well done, " + state.learner.name.split(" ")[0] + ". You have completed the Core Courier Driver Fundamentals course.";
+  showView("view-certificate");
+  // Wire download
+  document.getElementById("downloadCert").onclick = () => generateCertPDF(state.learner.name, dateStr, certRef);
+  document.getElementById("backToDashFromCert").addEventListener("click", () => { showView("view-dashboard"); renderDashboard(); });
+}
+
+function generateCertPDF(name, dateStr, certRef) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+  const w = doc.internal.pageSize.getWidth();
+  const h = doc.internal.pageSize.getHeight();
+  // Gold border
+  doc.setDrawColor(197, 151, 44);
+  doc.setLineWidth(3);
+  doc.rect(10, 10, w - 20, h - 20);
+  doc.setLineWidth(0.5);
+  doc.rect(14, 14, w - 28, h - 28);
+  // Header
+  doc.setFontSize(14);
+  doc.setTextColor(139, 148, 163);
+  doc.text("MK GLOBAL SA (Pty) Ltd", w / 2, 35, { align: "center" });
+  // Title
+  doc.setFontSize(28);
+  doc.setTextColor(27, 58, 92);
+  doc.text("CERTIFICATE OF TRAINING ATTENDED", w / 2, 55, { align: "center" });
+  // Gold line
+  doc.setDrawColor(197, 151, 44);
+  doc.setLineWidth(1);
+  doc.line(w / 2 - 60, 62, w / 2 + 60, 62);
+  // Body
+  doc.setFontSize(14);
+  doc.setTextColor(58, 66, 81);
+  doc.text("This certifies that", w / 2, 78, { align: "center" });
+  doc.setFontSize(24);
+  doc.setTextColor(27, 58, 92);
+  doc.text(name, w / 2, 92, { align: "center" });
+  doc.setFontSize(14);
+  doc.setTextColor(58, 66, 81);
+  doc.text("has completed the", w / 2, 106, { align: "center" });
+  doc.setFontSize(18);
+  doc.setTextColor(46, 117, 182);
+  doc.text("Core Courier Driver Fundamentals", w / 2, 118, { align: "center" });
+  doc.setFontSize(14);
+  doc.setTextColor(58, 66, 81);
+  doc.text("of the Courier Driver Training programme.", w / 2, 130, { align: "center" });
+  // Date and ref
+  doc.setFontSize(11);
+  doc.setTextColor(139, 148, 163);
+  doc.text("Date: " + dateStr + "    |    Certificate Ref: " + certRef, w / 2, 150, { align: "center" });
+  // Disclaimer
+  doc.setFontSize(9);
+  doc.text("This certificate confirms attendance of a professional development programme.", w / 2, 165, { align: "center" });
+  doc.text("It is not a formal SAQA qualification and does not replace any licence, permit, or certificate required by law.", w / 2, 171, { align: "center" });
+  // Footer
+  doc.setFontSize(10);
+  doc.setTextColor(27, 58, 92);
+  doc.text("MK Global SA (Pty) Ltd  |  info@mkglobal.co.za", w / 2, 185, { align: "center" });
+  doc.save("MKGlobal_CoreCourierFundamentals_Certificate.pdf");
+}
+
+/* Action Plan */
+function wireActionPlan() {
+  document.getElementById("backToDashFromAP").addEventListener("click", () => { showView("view-dashboard"); renderDashboard(); });
+}
+
+/* Init */
+document.addEventListener("DOMContentLoaded", () => {
+  wireAccessGate();
+  wireRegistration();
+  wireSessionView();
+  wireDashboardActions();
+  wireAssessment();
+  wireActionPlan();
+  route();
+});
+</script>
+</body>
+</html>
