@@ -1093,7 +1093,7 @@ function generateCertPDF(name, dateStr, certRef) {
   doc.text("Date: " + dateStr + "    |    Certificate Ref: " + certRef, w / 2, 150, { align: "center" });
   // Disclaimer
   doc.setFontSize(9);
-  doc.text("This certificate confirms attendance of a professional development programme.", w / 2, 165, { align: "center" });
+  doc.text("This certificate confirms completion of a non-accredited development programme.", w / 2, 165, { align: "center" });
   doc.text("It is not a formal SAQA qualification and does not replace any licence, permit, or certificate required by law.", w / 2, 171, { align: "center" });
   // Footer
   doc.setFontSize(10);
